@@ -18,24 +18,16 @@ from jinja2 import Template
 
 cell_template = "|<div align='center'><a href='{{ link }}'><img src='{{ image }}' alt='{{ alt_text }}' width='140px'/></a><br><a href='{{ link }}'><b>{{ title }}</b></a></div>"
 
+data = [data[i:i + 4] for i in range(0, len(data), 4)]
 
-table_rows = []
-for i in range(0, len(data), 4):
-    row_data = data[i:i + 4]
+table_rows = ["|"]
+for row_data in data:
     cells = [Template(cell_template).render(link=cell["link"], image=cell["image"], alt_text=cell["alt_text"], title=cell["title"]) for cell in row_data]
-    table_rows.append("|" + "|".join(cells) + " |")
+    table_rows.append(" ".join(cells) + " |")
 
-markdown_table = "\n".join(table_rows)
+markdown_table = "".join(table_rows)
 
-with open("README.md", "w") as file:
+with open("output_table.md", "w") as file:
     file.write(markdown_table)
 
 print("Markdown table exported to output_table.md")
-
-
-
-
-
-
-
-
