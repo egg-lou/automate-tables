@@ -27,7 +27,7 @@ for row_data in data:
 
 markdown_table = "".join(table_rows)
 
-with open("output_table.md", "w") as file:
+with open("README.md", "w") as file:
     file.write(markdown_table)
 
 print("Markdown table exported to output_table.md")
