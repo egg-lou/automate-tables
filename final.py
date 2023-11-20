@@ -31,7 +31,7 @@ for i in range(0, len(data), 4):
 markdown_table = "\n".join(table_rows)
 
 # Write the final table to a Markdown file
-with open("output_table.md", "w") as file:
+with open("README.md", "w") as file:
     file.write(markdown_table)
 
 print("Markdown table exported to output_table.md")
